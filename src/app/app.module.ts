@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartModule } from './views/cart/cart.module';
-import { GroseryModule } from './views/grosery/grosery.module';
+import { GroceryModule } from './views/grocery/grocery.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { GroseryModule } from './views/grosery/grosery.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GroseryModule
+    GroceryModule
   ],
   providers: [CartModule],
   bootstrap: [AppComponent]

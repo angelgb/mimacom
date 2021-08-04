@@ -1,0 +1,11 @@
+<div class="header">
+  <i class="fas fa-chevron-left mobile-only"></i>
+  <h1>Product List</h1>
+  <i class="fas fa-star mobile-only"></i>
+</div>
+<div class="grosery-body">
+    <div *ngFor='let item of groceries'>
+      {{item.productName}}
+      <br/>
+    </div>
+</div>
