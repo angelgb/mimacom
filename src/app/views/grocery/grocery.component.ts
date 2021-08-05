@@ -1,6 +1,7 @@
 import { CartService } from './../cart/cart.service';
 import { GroceryService } from './grocery.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'grocery',
@@ -12,7 +13,8 @@ export class GroceryComponent implements OnInit {
   
   constructor(
     private groceryService: GroceryService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.loadData();
@@ -64,5 +66,9 @@ export class GroceryComponent implements OnInit {
       return item.stock - itemInCart.count > 0;
     }
     return item.stock > 0;
+  }
+
+  public navigateToCart() {
+    this.router.navigate(['cart'])
   }
 }

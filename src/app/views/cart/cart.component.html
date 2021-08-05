@@ -1,7 +1,7 @@
 <div class="header">
-  <i class="fas fa-chevron-left mobile-only"></i>
+  <i (click)='navigateToGrocery()' class="fas fa-chevron-left mobile-only"></i>
   <h1>Cart</h1>
-  <i class="fas fa-star mobile-only"></i>
+  <i></i>
 </div>
 <div class="cart-body">
   <div *ngFor="let item of cartService.getCart()">

@@ -1,6 +1,6 @@
 <div class="grocery">
   <div class="header">
-    <i class="fas fa-chevron-left mobile-only"></i>
+    <i (click)='navigateToCart()' class="fas fa-chevron-left mobile-only" ></i>
     <h1>Product List</h1>
     <i
       class="fas fa-star"
@@ -43,4 +43,4 @@
     </div>
   </div>
 </div>
-<cart (reloadEvent)="reloadData()"></cart>
+<cart class='grocery-cart' (reloadEvent)="reloadData()"></cart>

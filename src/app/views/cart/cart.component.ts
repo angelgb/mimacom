@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Component, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from './cart.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CartService } from './cart.service';
 })
 export class CartComponent {
   @Output() reloadEvent = new EventEmitter<string>();
-  constructor(public cartService: CartService) {}
+  constructor(public cartService: CartService, private router: Router) {}
 
   public bgImageParser(url: string): string {
     return `url("${url}")`;
@@ -26,13 +27,20 @@ export class CartComponent {
   public checkOut() {
     if (this.getTotal()) {
       this.cartService.getCart().forEach((item) => {
-        this.cartService.checkOutItem(item).subscribe(() => {
-          this.cartService.removeItem(item)
-          this.reloadEvent.emit()
-        }, ((error) => {
-          alert('producto no actualizado: ' + error)
-        }))
-      })
+        this.cartService.checkOutItem(item).subscribe(
+          () => {
+            this.cartService.removeItem(item);
+            this.reloadEvent.emit();
+          },
+          (error) => {
+            alert('producto no actualizado: ' + error);
+          }
+        );
+      });
     }
+  }
+
+  public navigateToGrocery() {
+    this.router.navigate(['grocery']);
   }
 }
