@@ -9,11 +9,17 @@ export class GroceryService {
 
   private PAGE_SIZE = 20;
   private currentPage = 1;
+  private BASE_PATH = 'http://localhost:3000/grocery'
 
-  public getGroceries() {
+  public getGroceries(): Observable<object> {
     return this.http.get(
-      `http://localhost:3000/grocery?_page=${this.currentPage}&_limit=${this.PAGE_SIZE}`
+      `${this.BASE_PATH}?_page=${this.currentPage}&_limit=${this.PAGE_SIZE}`
     );
+  }
+
+  public patchFavorite(item: any): Observable<object> {
+    const url = `${this.BASE_PATH}/${item.id}`;
+    return this.http.patch(url, { favorite: item.favorite ? 0 : '1' });
   }
 
   public getPageSize(): number {

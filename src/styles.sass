@@ -20,8 +20,6 @@ body
     flex-direction: row
     justify-content: space-between
     align-items: center
-    .favorite-selected
-        color: colors.$yellow
     h1
         margin: 0
 
@@ -31,6 +29,9 @@ body
     height: variables.$cardImageSize
     background-size: cover
     background-repeat: no-repeat
+    i 
+        padding: variables.$padding
+        cursor: pointer
 
 .cart-body
     display: flex
@@ -92,3 +93,6 @@ body
     &.btn-disabled
         background-color: colors.$btn-disabled
         cursor: no-drop
+
+.favorite-selected
+    color: colors.$yellow

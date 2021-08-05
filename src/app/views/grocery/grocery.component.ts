@@ -41,7 +41,9 @@ export class GroceryComponent implements OnInit {
   }
 
   public setFavoriteItem(item: any){
-
+    this.groceryService.patchFavorite(item).subscribe((data: any) => {
+      item.favorite = data.favorite
+    })
   }
 
   public reloadData() {
