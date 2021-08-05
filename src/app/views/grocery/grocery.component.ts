@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'grocery',
-  templateUrl: './grocery.component.html',
+  templateUrl: './grocery.component.html'
 })
 export class GroceryComponent implements OnInit {
   public groceries: any[] = [];

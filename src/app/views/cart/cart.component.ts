@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { CartService } from './cart.service';
 
 @Component({
@@ -6,6 +7,7 @@ import { CartService } from './cart.service';
   templateUrl: './cart.component.html',
 })
 export class CartComponent {
+  @Output() reloadEvent = new EventEmitter<string>();
   constructor(public cartService: CartService) {}
 
   public bgImageParser(url: string): string {
@@ -26,6 +28,7 @@ export class CartComponent {
       this.cartService.getCart().forEach((item) => {
         this.cartService.checkOutItem(item).subscribe(() => {
           this.cartService.removeItem(item)
+          this.reloadEvent.emit()
         }, ((error) => {
           alert('producto no actualizado: ' + error)
         }))
