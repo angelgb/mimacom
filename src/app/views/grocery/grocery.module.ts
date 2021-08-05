@@ -1,3 +1,4 @@
+import { CartService } from './../cart/cart.service';
 import { GroceryService } from './grocery.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [GroceryService],
+  providers: [GroceryService, CartService],
   bootstrap: [GroceryComponent]
 })
 export class GroceryModule { }
