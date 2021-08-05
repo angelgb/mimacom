@@ -1,33 +1,36 @@
-<div class="header">
-  <i class="fas fa-chevron-left mobile-only"></i>
-  <h1>Product List</h1>
-  <i class="fas fa-star mobile-only"></i>
-</div>
-<div class="grocery-body">
-  <div *ngFor="let item of groceries">
-    <div
-      class="card-img"
-      [style.background-image]="bgImageParser(item.image_url)"
-    ></div>
-    <div class="card-data">
-      <div class="card-data-main">
-        <span>{{ item.productName }}</span>
-        <span>{{ item.price | currency }}</span>
-      </div>
-      <div class="card-data-description descktop-only">
-        {{ item.productDescription }}
-      </div>
-    </div>
-    <div class="card-stock-manage">
-      <span>{{ item.stock }} left</span>
+<div class="grocery">
+  <div class="header">
+    <i class="fas fa-chevron-left mobile-only"></i>
+    <h1>Product List</h1>
+    <i class="fas fa-star mobile-only"></i>
+  </div>
+  <div class="grocery-body">
+    <div *ngFor="let item of groceries">
       <div
-        class="button card-button-add"
-        [ngClass]="{ 'btn-disabled': !availability(item) }"
-        (click)="addToCart(item)"
-      >
-        <i class="fas fa-cart-plus"></i> add
+        class="card-img"
+        [style.background-image]="bgImageParser(item.image_url)"
+      ></div>
+      <div class="card-data">
+        <div class="card-data-main">
+          <span>{{ item.productName }}</span>
+          <span>{{ item.price | currency }}</span>
+        </div>
+        <div class="card-data-description descktop-only">
+          {{ item.productDescription }}
+        </div>
       </div>
+      <div class="card-stock-manage">
+        <span>{{ item.stock }} left</span>
+        <div
+          class="button card-button-add"
+          [ngClass]="{ 'btn-disabled': !availability(item) }"
+          (click)="addToCart(item)"
+        >
+          <i class="fas fa-cart-plus"></i> add
+        </div>
+      </div>
+      <br />
     </div>
-    <br />
   </div>
 </div>
+<cart (reloadEvent)="reloadData()"></cart>

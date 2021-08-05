@@ -12,7 +12,7 @@ import { GroceryService } from './views/grocery/grocery.service';
 import { HttpClient } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, CartComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, GroceryModule],
   providers: [CartModule, GroceryComponent],
   bootstrap: [AppComponent],

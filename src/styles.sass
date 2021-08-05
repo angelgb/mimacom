@@ -6,13 +6,14 @@
 body
     background-color: colors.$bg-grey
     app-root
-        display: flex
-        flex-direction: row
-        justify-content: space-between
         grocery
-            width: calc( 100vw - 400px )
-        cart 
-            width: 400px
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            .grocery
+                width: calc( 100vw - 400px )
+            cart 
+                width: 400px
 
 .header
     display: flex
