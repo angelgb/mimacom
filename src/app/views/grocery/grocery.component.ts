@@ -16,7 +16,7 @@ export class GroceryComponent implements OnInit {
     this.loadData();
   }
 
-  private loadData(): void {
+  private loadData() {
     this.groceryService.getGroceries().subscribe((data: any) => {
       this.groceries = this.groceries.concat(data);
       if (data.length === this.groceryService.getPageSize()) {
@@ -28,6 +28,12 @@ export class GroceryComponent implements OnInit {
 
   public bgImageParser(url: string): string {
     return `url("${url}")`;
+  }
+
+  public reloadData() {
+    this.groceries = []
+    this.groceryService.resetPage()
+    this.loadData()
   }
 
   public addToCart(item: any) {

@@ -10,17 +10,21 @@ export class GroceryService {
   private PAGE_SIZE = 20;
   private currentPage = 1;
 
-  getGroceries() {
+  public getGroceries() {
     return this.http.get(
       `http://localhost:3000/grocery?_page=${this.currentPage}&_limit=${this.PAGE_SIZE}`
     );
   }
 
-  getPageSize(): number {
+  public getPageSize(): number {
     return this.PAGE_SIZE;
   }
 
-  nextPage(): void{
-    this.currentPage++
+  public nextPage() {
+    this.currentPage++;
+  }
+
+  public resetPage() {
+    this.currentPage = 1;
   }
 }

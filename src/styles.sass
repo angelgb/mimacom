@@ -5,6 +5,14 @@
 
 body
     background-color: colors.$bg-grey
+    app-root
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        grocery
+            width: calc( 100vw - 400px )
+        cart 
+            width: 400px
 
 .header
     display: flex
@@ -20,6 +28,32 @@ body
     height: variables.$cardImageSize
     background-size: cover
     background-repeat: no-repeat
+
+.cart-body
+    display: flex
+    flex-direction: column
+    & > div
+        background-color: white
+        margin: 10px
+        display: flex
+        .card-data
+            height: variables.$cartImageSize
+            & > .card-data-main
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                font-size: 15px
+                & > span
+                    padding: variables.$padding
+            & > .card-counter
+                display: flex
+                align-items: center
+                i 
+                    cursor: pointer
+                    margin: 10px
+    .card-img
+        width: variables.$cartImageSize
+        height: variables.$cartImageSize
 
 .grocery-body
     display: flex
