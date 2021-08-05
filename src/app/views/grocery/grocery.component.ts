@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './grocery.component.html'
 })
 export class GroceryComponent implements OnInit {
+  public showFavorite: boolean = false
   public groceries: any[] = [];
+  
   constructor(
     private groceryService: GroceryService,
     private cartService: CartService
@@ -28,6 +30,18 @@ export class GroceryComponent implements OnInit {
 
   public bgImageParser(url: string): string {
     return `url("${url}")`;
+  }
+
+  public getGroceries(): any[] {
+    if(this.showFavorite) {
+      return this.groceries.filter(item => item.favorite)
+    } else {
+      return this.groceries
+    }
+  }
+
+  public setFavoriteItem(item: any){
+
   }
 
   public reloadData() {

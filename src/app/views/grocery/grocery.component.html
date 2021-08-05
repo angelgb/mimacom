@@ -2,14 +2,24 @@
   <div class="header">
     <i class="fas fa-chevron-left mobile-only"></i>
     <h1>Product List</h1>
-    <i class="fas fa-star mobile-only"></i>
+    <i
+      class="fas fa-star"
+      [ngClass]="{ 'favorite-selected': showFavorite }"
+      (click)="showFavorite = !showFavorite"
+    ></i>
   </div>
   <div class="grocery-body">
-    <div *ngFor="let item of groceries">
+    <div *ngFor="let item of getGroceries()">
       <div
         class="card-img"
         [style.background-image]="bgImageParser(item.image_url)"
-      ></div>
+      >
+        <i
+          class="fas fa-star"
+          [ngClass]="{ 'favorite-selected': item.favorite }"
+          (click)="setFavoriteItem(item)"
+        ></i>
+      </div>
       <div class="card-data">
         <div class="card-data-main">
           <span>{{ item.productName }}</span>
