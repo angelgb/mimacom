@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CartModule } from './views/cart/cart.module';
+import { GroceryComponent } from './views/grocery/grocery.component';
+import { GroceryModule } from './views/grocery/grocery.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      imports: [BrowserModule, AppRoutingModule, GroceryModule],
+      providers: [CartModule, GroceryComponent]
     }).compileComponents();
   });
 
@@ -26,10 +28,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('mimacom');
   });
 
-  it('should render title', () => {
+  it('Access to reload data', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('mimacom app is running!');
+    const app = fixture.componentInstance;
+    expect(app.reloadData).toBeDefined()
+    app.reloadData()
   });
 });
